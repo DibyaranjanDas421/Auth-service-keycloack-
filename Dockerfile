@@ -15,4 +15,4 @@ COPY api-gateway-auth-realm.json /opt/keycloak/data/import/
 EXPOSE 8080
 
 # Start Keycloak in development mode with realm import (No database)
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--http-port", "${PORT:-8080}"]
