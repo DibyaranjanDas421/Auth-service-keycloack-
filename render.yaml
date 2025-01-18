@@ -1,0 +1,18 @@
+services:
+  - name: keycloak
+    type: web
+    runtime: docker
+    plan: standard  # Free tier might not work due to resource limits
+    dockerContext: .
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: KEYCLOAK_ADMIN
+        value: admin
+      - key: KEYCLOAK_ADMIN_PASSWORD
+        value: admin1234
+    disk:
+      name: keycloak-data
+      mountPath: /opt/keycloak/data/import
+      sizeGB: 1
+    healthCheckPath: /health/live  # Keycloak's built-in health check
+    autoDeploy: true
