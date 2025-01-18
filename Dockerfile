@@ -5,6 +5,8 @@ WORKDIR /opt/keycloak
 # Ensure the folder exists before copying
 RUN mkdir -p /opt/keycloak/data/import
 
+EXPOSE 9191
+
 # Copy the realm-config directory
 COPY realm-config/ /opt/keycloak/data/import/
 
