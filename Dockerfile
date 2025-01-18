@@ -14,5 +14,5 @@ COPY api-gateway-auth-realm.json /opt/keycloak/data/import/
 # Expose Render's dynamic port (Render assigns a port automatically)
 EXPOSE 8080
 
-# Start Keycloak with PostgreSQL and realm import
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--db=postgres", "--db-url=jdbc:postgresql://your-db-host:5432/keycloak", "--db-username=youruser", "--db-password=yourpassword", "--import-realm"]
+# Start Keycloak in development mode with realm import (No database)
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm"]
