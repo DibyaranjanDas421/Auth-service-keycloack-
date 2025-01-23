@@ -11,7 +11,7 @@ EXPOSE 8080
 # Set environment variables for Keycloak admin
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin1234
-ENV HTTP_PORT=${PORT}  # Railway assigns dynamic port
+ENV HTTP_PORT=${PORT}
 
 # Start Keycloak with required arguments
 CMD ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--http-port=${PORT}"]
