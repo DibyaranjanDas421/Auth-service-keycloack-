@@ -8,7 +8,7 @@ RUN mkdir -p /opt/keycloak/data/import
 EXPOSE 9191
 
 # Copy the realm-config directory
-COPY realm-config/ /opt/keycloak/data/import/
+COPY realm-config/api-gateway-auth-realm.json /opt/keycloak/data/import/api-gateway-auth-realm.json
 
 # Set Keycloak to import the realm file
 ENV KEYCLOAK_IMPORT=/opt/keycloak/data/import/api-gateway-auth-realm.json
@@ -16,4 +16,5 @@ ENV KEYCLOAK_IMPORT=/opt/keycloak/data/import/api-gateway-auth-realm.json
 # Set Java options
 ENV JAVA_OPTS="-Xms256m -Xmx512m"
 
-CMD ["start-dev", "--import-realm", "--http-port=9191"]
+# Allow Railway's dynamic port assignment
+CMD ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--http-port=${PORT}", "--health-enabled=true"]
