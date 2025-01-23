@@ -14,4 +14,4 @@ ENV KEYCLOAK_ADMIN_PASSWORD=admin1234
 ENV HTTP_PORT=${PORT}
 
 # Start Keycloak with required arguments
-CMD ["/opt/keycloak/bin/kc.sh", "start-dev", "--import-realm", "--http-port=${PORT}"]
+CMD ["kc", "start-dev", "--import-realm", "--http-port=${PORT}"]
