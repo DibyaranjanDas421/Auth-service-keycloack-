@@ -8,10 +8,10 @@ COPY realm-config/ /opt/keycloak/data/import/
 # Expose the port Keycloak will use
 EXPOSE 8080
 
-# Set environment variables for Keycloak admin
+# Set environment variables for Keycloak admin and port
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=admin1234
-ENV HTTP_PORT=${PORT}
+ENV HTTP_PORT=8080
 
-# Start Keycloak with required arguments (use the default entrypoint)
-CMD ["start-dev", "--import-realm", "--http-port=${PORT}"]
+# Start Keycloak with required arguments
+CMD ["start-dev", "--import-realm", "--http-port=8080"]
